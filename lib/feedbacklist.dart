@@ -15,10 +15,14 @@ class _FeedBackListState extends State<FeedBackList> {
   final TextEditingController descripController = TextEditingController();
 
   Future<void> submit() async {
-    const url = 'https://souvenirapi.up.railway.app/feedback/';
+    const url = 'https://api.nstack.in/v1/todos';
     final text = _nameController.text;
     final description = descripController.text;
-    final body = {"name": text, "description": description};
+    final body = {
+      "title": text,
+      "description": description,
+      "is_completed": false
+    };
     final response =
         await http.post(Uri.parse(url), body: jsonEncode(body), headers: {
       'Content-Type': 'application/json',
@@ -31,33 +35,35 @@ class _FeedBackListState extends State<FeedBackList> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          backgroundColor: Colors.blueGrey,
           body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _nameController,
-              decoration: const InputDecoration(hintText: 'enter name'),
-              maxLines: 2,
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                TextField(
+                  controller: _nameController,
+                  decoration: const InputDecoration(hintText: 'enter name'),
+                  maxLines: 2,
+                ),
+                TextField(
+                  controller: descripController,
+                  decoration:
+                      const InputDecoration(hintText: 'enter description'),
+                  maxLines: 3,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: submit,
+                  child: const Text(
+                    'Submit',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
             ),
-            TextField(
-              controller: descripController,
-              decoration: const InputDecoration(hintText: 'enter description'),
-              maxLines: 3,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: submit,
-              child: const Text(
-                'Submit',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        ),
-      )),
+          )),
     );
   }
 }
