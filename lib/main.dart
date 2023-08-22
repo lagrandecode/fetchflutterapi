@@ -24,14 +24,21 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: GestureDetector(
-          onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const FeedBackList()));
-          },
-          child: const Text(
-            'Move to the next',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
+        body: Column(
+          children: [
+            GestureDetector(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const FeedBackList()));
+              },
+              child: const Text(
+                'Move to the next',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              child: Text('fetch page'),
+            )
+          ],
         ),
       ),
     );

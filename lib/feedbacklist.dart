@@ -27,6 +27,9 @@ class _FeedBackListState extends State<FeedBackList> {
         await http.post(Uri.parse(url), body: jsonEncode(body), headers: {
       'Content-Type': 'application/json',
     });
+    if(response.statusCode==201){
+      showMessage('created Successfully');
+    }
     print(response.statusCode);
     print(response.body);
   }
@@ -35,7 +38,7 @@ class _FeedBackListState extends State<FeedBackList> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Colors.white,
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -65,5 +68,9 @@ class _FeedBackListState extends State<FeedBackList> {
             ),
           )),
     );
+  }
+  void showMessage(String message){
+    final snackBar = SnackBar(content: Text(message,style: TextStyle(fontSize: 18.0),),backgroundColor: Colors.green,);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
