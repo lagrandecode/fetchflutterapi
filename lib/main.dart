@@ -35,6 +35,7 @@ class Home extends StatelessWidget {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
+
             Container(
               child: Text('fetch page'),
             )
