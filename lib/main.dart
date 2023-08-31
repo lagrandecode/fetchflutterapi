@@ -1,4 +1,5 @@
 import 'package:fetch_data/feedbacklist.dart';
+import 'package:fetch_data/fetch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -36,8 +37,13 @@ class Home extends StatelessWidget {
               ),
             ),
 
-            Container(
-              child: Text('fetch page'),
+            GestureDetector(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const Fetch()));
+              },
+              child: Container(
+                child: Text('fetch page'),
+              ),
             )
           ],
         ),
