@@ -1,7 +1,10 @@
 import 'package:fetch_data/feedbacklist.dart';
 import 'package:fetch_data/fetch.dart';
+import 'package:fetch_data/models/myform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'kobo.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,7 +45,15 @@ class Home extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const Fetch()));
               },
               child: Container(
-                child: Text('fetch page'),
+                child: const Text('fetch page',style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold,),),
+              ),
+            ),
+            GestureDetector(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ExternalMyApp()));
+              },
+              child: Container(
+                child: Text('Kobotoolbox', style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold),),
               ),
             )
           ],
